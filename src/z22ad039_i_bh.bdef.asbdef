@@ -1,0 +1,35 @@
+unmanaged implementation in class zbp_22ad039_i_bh unique;
+strict ( 2 );
+
+define behavior for Z22AD039_I_BH
+lock master
+authorization master ( instance )
+{
+  create ( authorization : global );
+  update;
+  delete;
+
+  // KEY must be readonly for the system to generate it [cite: 756, 854]
+  field ( readonly ) bill_uuid;
+
+  // Business fields MUST be mandatory to enable the 'Create' button
+  field ( mandatory ) bill_no, cust_name, bill_date, currency;
+
+  association _Item { create; }
+}
+
+define behavior for Z22AD039_I_BI
+lock dependent by _Header
+authorization dependent by _Header
+{
+  update;
+  delete;
+
+  // Parent and item keys must be readonly [cite: 854, 870]
+  field ( readonly ) item_uuid, bill_uuid;
+
+  // Mandatory fields for the item section [cite: 2447]
+  field ( mandatory ) product_id, qty, unit_price;
+
+  association _Header;
+}

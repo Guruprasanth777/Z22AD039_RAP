@@ -1,0 +1,5 @@
+@EndUserText.label: 'Retail Billing Service 22AD039'
+define service Z22AD039_SD {
+  expose Z22AD039_I_BH as BillHeader;
+  expose Z22AD039_I_BI as BillItem;
+}

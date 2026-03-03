@@ -1,0 +1,46 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+  typeName: 'Bill',
+  typeNamePlural: 'Bills',
+  title: { value: 'bill_no' },
+  description: { value: 'cust_name' }
+}
+@UI.presentationVariant: [{ sortOrder: [{ by: 'bill_date', direction: #DESC }] }]
+
+annotate view Z22AD039_I_BH with
+{
+  @UI.facet: [
+    { id: 'GeneralInfo', type: #COLLECTION, label: 'General Information', position: 10 },
+    { id: 'HeaderData',  purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE, 
+      label: 'Bill Details', parentId: 'GeneralInfo', position: 10 },
+    { id: 'Items', purpose: #STANDARD, type: #LINEITEM_REFERENCE, 
+      label: 'Bill Items', position: 20, targetElement: '_Item' }
+  ]
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10, label: 'Invoice Number' }]
+  @UI.selectionField: [{ position: 10 }]
+  bill_no;
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20, label: 'Customer Name' }]
+  @UI.selectionField: [{ position: 20 }]
+  cust_name;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30, label: 'Billing Date' }]
+  bill_date;
+
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40, label: 'Total Amount' }]
+  total_amt;
+
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 50, label: 'Currency' }]
+  currency;
+
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 60, label: 'Payment Status' }]
+  @UI.selectionField: [{ position: 30 }]
+  pay_status;
+}

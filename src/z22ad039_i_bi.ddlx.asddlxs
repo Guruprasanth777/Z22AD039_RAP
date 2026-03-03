@@ -1,0 +1,26 @@
+@Metadata.layer: #CORE
+annotate view Z22AD039_I_BI with
+{
+  @UI.facet: [{ id: 'ItemData', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE, 
+                label: 'Product Details', position: 10 }]
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10, label: 'Product ID' }]
+  product_id;
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20, label: 'Quantity' }]
+  qty;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30, label: 'Unit Price' }]
+  unit_price;
+
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40, label: 'Subtotal' }]
+  subtotal;
+
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 50, label: 'Currency' }]
+  currency;
+}
